@@ -1,0 +1,44 @@
+{{!-- Page to show details of grades --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'grade details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit grade
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "grades" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "grades.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of grade. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'points'}}</td>
+        {{handle-attribute model=model attribute='points' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'student'}}</td>
+       {{display-model-belongsto-relationship model=model.student itemRoute='people.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'class'}}</td>
+       {{display-model-belongsto-relationship model=model.class itemRoute='classes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,52 @@
+{{!-- Page to show details of classes --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'class details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit class
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "classes" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "classes.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of class. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'name'}}</td>
+        {{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'subject'}}</td>
+        {{handle-attribute model=model attribute='subject' tagName='td' classes='properties__data'}}
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'teachers'}}</td>
+       {{display-model-hasmany-relationship   model=model.teachers itemRoute='people.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'students'}}</td>
+       {{display-model-hasmany-relationship   model=model.students itemRoute='people.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'grades'}}</td>
+       {{display-model-hasmany-relationship   model=model.grades itemRoute='grades.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

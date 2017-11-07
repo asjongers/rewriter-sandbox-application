@@ -1,0 +1,43 @@
+{{!-- Page to edit class --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit class')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete class.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new class" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of class. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>name</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='name' editable=true}}</td>
+</tr>
+      <tr>
+      <td>subject</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='subject' editable=true}}</td>
+</tr>
+
+        
+        <tr><td>teachers</td><td align='middle'>{{edit-has-many relName=changeset.teachers relType="person"}}</td></tr>
+      <tr><td>students</td><td align='middle'>{{edit-has-many relName=changeset.students relType="person"}}</td></tr>
+      <tr><td>grades</td><td align='middle'>{{edit-has-many relName=changeset.grades relType="grade"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

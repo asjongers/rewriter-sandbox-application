@@ -1,5 +1,15 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+{{!-- Basic view with navbar, menu on the left and content on the right. --}}
+<div class="navbar">
+  {{#link-to "index" tagName="h1" class="title" }}
+    Test Application
+  {{/link-to}}
+  <div class="navigation-menu">
+    {{#power-select options=options selected=selectedOption onchange=(action "setOption") as |option|}}
+      {{option.name}}
+    {{/power-select}}
+    {{navigation-menu}}
+  </div>
+</div>
+<div class="main-content">
+  {{outlet}}
+</div>

@@ -1,0 +1,33 @@
+{{!-- Page to create a new grade --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New grade')}}</h2>
+
+  {{!--
+    Actions to save new grade
+    or delete new grade.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new grade" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of grade. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>points</td>
+<td align='middle'>{{handle-attribute model=model attribute='points' editable=true}}</td>
+      </tr>
+      <tr><td>student</td><td align='middle'>{{edit-belongs-to relName=model.student relType="person"}}</td></tr>
+      <tr><td>class</td><td align='middle'>{{edit-belongs-to relName=model.class relType="class"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

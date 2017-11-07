@@ -1,0 +1,38 @@
+{{!-- Page to create a new class --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New class')}}</h2>
+
+  {{!--
+    Actions to save new class
+    or delete new class.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new class" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of class. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>name</td>
+<td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>subject</td>
+<td align='middle'>{{handle-attribute model=model attribute='subject' editable=true}}</td>
+      </tr>
+      
+      <tr><td>teachers</td><td align='middle'>{{edit-has-many relName=model.teachers relType="person"}}</td></tr>
+      <tr><td>students</td><td align='middle'>{{edit-has-many relName=model.students relType="person"}}</td></tr>
+      <tr><td>grades</td><td align='middle'>{{edit-has-many relName=model.grades relType="grade"}}</td></tr>
+    </tbody>
+  </table>
+</div>

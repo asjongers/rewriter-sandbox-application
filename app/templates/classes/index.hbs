@@ -1,0 +1,43 @@
+{{!-- Page to list classes --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'classes')}}</h2>
+  <div class="actions">{{#link-to "classes.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="name" currentSort=sort}}
+{{sortable-table-header attribute="subject" currentSort=sort}}
+
+          
+          {{sortable-table-header attribute="teachers" currentSort=sort}}
+{{sortable-table-header attribute="students" currentSort=sort}}
+{{sortable-table-header attribute="grades" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "classes.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='name' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='subject' tagName='td' classes='properties__data'}}
+
+            {{display-model-hasmany-relationship   model=item.teachers tagName='td' itemRoute='people.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.students tagName='td' itemRoute='people.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.grades tagName='td' itemRoute='grades.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'classes')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "class")}}.
+    </div>
+  {{/if}}
+</div>

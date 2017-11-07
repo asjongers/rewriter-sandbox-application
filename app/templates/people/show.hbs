@@ -1,0 +1,56 @@
+{{!-- Page to show details of people --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'person details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit person
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "people" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "people.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of person. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'name'}}</td>
+        {{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'email'}}</td>
+        {{handle-attribute model=model attribute='email' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'role'}}</td>
+        {{handle-attribute model=model attribute='role' tagName='td' classes='properties__data'}}
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'classesTaught'}}</td>
+       {{display-model-hasmany-relationship   model=model.classesTaught itemRoute='classes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'classesTaken'}}</td>
+       {{display-model-hasmany-relationship   model=model.classesTaken itemRoute='classes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'earnedGrades'}}</td>
+       {{display-model-hasmany-relationship   model=model.earnedGrades itemRoute='grades.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

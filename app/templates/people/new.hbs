@@ -1,0 +1,42 @@
+{{!-- Page to create a new person --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New person')}}</h2>
+
+  {{!--
+    Actions to save new person
+    or delete new person.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new person" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of person. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>name</td>
+<td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>email</td>
+<td align='middle'>{{handle-attribute model=model attribute='email' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>role</td>
+<td align='middle'>{{handle-attribute model=model attribute='role' editable=true}}</td>
+      </tr>
+      
+      <tr><td>classesTaught</td><td align='middle'>{{edit-has-many relName=model.classesTaught relType="class"}}</td></tr>
+      <tr><td>classesTaken</td><td align='middle'>{{edit-has-many relName=model.classesTaken relType="class"}}</td></tr>
+      <tr><td>earnedGrades</td><td align='middle'>{{edit-has-many relName=model.earnedGrades relType="grade"}}</td></tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,38 @@
+{{!-- Page to edit grade --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit grade')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete grade.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new grade" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of grade. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>points</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='points' editable=true}}</td>
+</tr>
+
+        <tr><td>student</td><td align='middle'>{{edit-belongs-to relName=changeset.student relType="person"}}</td></tr>
+      <tr><td>class</td><td align='middle'>{{edit-belongs-to relName=changeset.class relType="class"}}</td></tr>
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}
