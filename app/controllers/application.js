@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
     setOption(option) {
       const _this = this;
       this.set('selectedOption', option);
-      let prom = Ember.$.post("http://localhost:9000/as/auth", { user: option.name });
+      let prom = Ember.$.post("/as/auth", { user: option.name });
       prom.catch(error => {
         console.log("error");
         _this.send('userChanged');

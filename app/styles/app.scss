@@ -1,2 +1,15 @@
-$mainColor: crimson;
+$mainColor: #424;
 @import "ember-mu-application-generator";
+
+
+.navbar .navigation-menu {
+    width: 32%;
+}
+.navigation-menu > div {
+    display: inline-block;
+    float: right;
+    margin-left: .5em;
+}
+.ember-power-select-trigger {
+  min-width: 50px;
+}
