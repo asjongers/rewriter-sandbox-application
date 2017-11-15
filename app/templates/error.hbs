@@ -1,0 +1,12 @@
+<div>
+{{#if id}}
+  The resource with the following identifier could not be found : [{{id}}].
+{{else}}
+  An error occurred.
+{{/if}}
+</div>
+<br/><br/>
+<div>
+  <label>Error message:</label> <p>{{error.message}}</p>
+</div>
+{{outlet}}
