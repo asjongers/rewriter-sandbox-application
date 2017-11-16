@@ -8,9 +8,8 @@
         <tr>
           <th class="properties__label">id</th>
           {{sortable-table-header attribute="name" currentSort=sort}}
-{{sortable-table-header attribute="subject" currentSort=sort}}
 
-          
+          {{sortable-table-header attribute="subject" currentSort=sort}}
           {{sortable-table-header attribute="teachers" currentSort=sort}}
 {{sortable-table-header attribute="students" currentSort=sort}}
 {{sortable-table-header attribute="grades" currentSort=sort}}
@@ -21,8 +20,7 @@
           {{#link-to "classes.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='name' tagName='td' classes='properties__data'}}
-            {{handle-attribute model=item attribute='subject' tagName='td' classes='properties__data'}}
-
+            {{display-model-belongsto-relationship model=item.subject tagName='td' itemRoute='subjects.show' configuredLabel='stringRep'}}
             {{display-model-hasmany-relationship   model=item.teachers tagName='td' itemRoute='people.show' configuredLabel='stringRep'}}
             {{display-model-hasmany-relationship   model=item.students tagName='td' itemRoute='people.show' configuredLabel='stringRep'}}
             {{display-model-hasmany-relationship   model=item.grades tagName='td' itemRoute='grades.show' configuredLabel='stringRep'}}

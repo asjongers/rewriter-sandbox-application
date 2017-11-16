@@ -31,10 +31,9 @@
         {{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}
       </tr>
       <tr>
-        <td>{{t 'subject'}}</td>
-        {{handle-attribute model=model attribute='subject' tagName='td' classes='properties__data'}}
+        <td class="properties__label">{{t 'subject'}}</td>
+       {{display-model-belongsto-relationship model=model.subject itemRoute='subjects.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
-
       <tr>
         <td class="properties__label">{{t 'teachers'}}</td>
        {{display-model-hasmany-relationship   model=model.teachers itemRoute='people.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}

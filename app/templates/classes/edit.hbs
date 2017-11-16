@@ -27,12 +27,8 @@
       <td>name</td>
       <td align='middle'>{{handle-attribute model=changeset attribute='name' editable=true}}</td>
 </tr>
-      <tr>
-      <td>subject</td>
-      <td align='middle'>{{handle-attribute model=changeset attribute='subject' editable=true}}</td>
-</tr>
 
-        
+        <tr><td>subject</td><td align='middle'>{{edit-belongs-to relName=changeset.subject relType="subject"}}</td></tr>
         <tr><td>teachers</td><td align='middle'>{{edit-has-many relName=changeset.teachers relType="person"}}</td></tr>
       <tr><td>students</td><td align='middle'>{{edit-has-many relName=changeset.students relType="person"}}</td></tr>
       <tr><td>grades</td><td align='middle'>{{edit-has-many relName=changeset.grades relType="grade"}}</td></tr>

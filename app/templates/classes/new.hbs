@@ -25,11 +25,7 @@
         <td>name</td>
 <td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
       </tr>
-      <tr>
-        <td>subject</td>
-<td align='middle'>{{handle-attribute model=model attribute='subject' editable=true}}</td>
-      </tr>
-      
+      <tr><td>subject</td><td align='middle'>{{edit-belongs-to relName=model.subject relType="subject"}}</td></tr>
       <tr><td>teachers</td><td align='middle'>{{edit-has-many relName=model.teachers relType="person"}}</td></tr>
       <tr><td>students</td><td align='middle'>{{edit-has-many relName=model.students relType="person"}}</td></tr>
       <tr><td>grades</td><td align='middle'>{{edit-has-many relName=model.grades relType="grade"}}</td></tr>

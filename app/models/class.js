@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
-import { hasMany } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
@@ -9,7 +9,7 @@ export default Model.extend({
   stringRep: Ember.computed.collect.apply(this,['name']),
 
   name: attr('string'),
-  subject: attr('string'),
+  subject: belongsTo('subject', {inverse: null }),
   teachers: hasMany('person', {inverse: null }),
   students: hasMany('person', {inverse: null }),
   grades: hasMany('grade', {inverse: null })
