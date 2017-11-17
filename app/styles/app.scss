@@ -3,9 +3,14 @@ $mainColor: #424;
 
 
 .navbar .navigation-menu {
-    width: 32%;
+    width: 45%;
 }
 .navigation-menu > div {
+    display: inline-block;
+    float: right;
+    margin-left: .5em;
+}
+.navigation-menu > button {
     display: inline-block;
     float: right;
     margin-left: .5em;

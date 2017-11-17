@@ -38,6 +38,20 @@ export default Ember.Controller.extend({
       return prom.then(result => {
         _this.send('userChanged');
       })
+    },
+    clearData(){
+        Ember.$.ajax({ 
+            url: "/as/clear",
+            type: 'DELETE',
+            success: function(){
+                alert('Data cleared. Please refresh this page.');
+            }
+        });
+    },
+    generateData(){
+        Ember.$.post("/generate/generate").then(function(){
+            alert('Data being generated asynchronously. Please refresh this page.');
+        })
     }
   }
 });
