@@ -1,6 +1,17 @@
 $mainColor: #424;
 @import "ember-mu-application-generator";
 
+.route-not-found {
+  text-align: center;
+  font-size: 24px;
+  display: block;
+  i {
+    font-size: 48px;
+  }
+  > * {
+    margin: 10px;
+  }
+}
 
 .navbar .navigation-menu {
     width: 32%;
@@ -13,3 +24,4 @@ $mainColor: #424;
 .ember-power-select-trigger {
   min-width: 50px;
 }
+@import "ember-power-select";

@@ -1,7 +1,6 @@
-{{!-- Basic view for errors. --}}
 <div class="error">
   <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
-  <p>An error occurred.</p>
+  <p>An error occurred when trying to find this resource.</p>
 
   {{#if model.showError}}
     <div class="pointer" {{action "toggleShowError" model}}>
