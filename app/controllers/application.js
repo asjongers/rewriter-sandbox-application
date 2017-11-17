@@ -17,9 +17,12 @@ export default Ember.Controller.extend({
       _this.set('selectedOption', null);
     });
     prom.then(result => {
-      if(result) {
+      if(result.user) {
         _this.set('selectedOption', result);
       }
+      else {
+          _this.set('selectedOption', {user: "[select logged-in user]"});
+        }
     });
     this._super();
   },
