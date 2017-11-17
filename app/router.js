@@ -6,6 +6,7 @@ const Router = Ember.Router.extend({
   rootURL: config.rootURL
 });
 
+
 Router.map(function() {
   this.route('people', function() {
     this.route('show', {
@@ -46,6 +47,10 @@ Router.map(function() {
     this.route('edit', {
       path: ':id/edit'
     });
+  });
+
+  this.route('route-not-found', {
+    path: '/*wildcard'
   });
 });
 
