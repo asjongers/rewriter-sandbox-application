@@ -35,7 +35,7 @@
     "ember-datetimepicker": "^2.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
-    "ember-mu-application-generator": "git+ssh://git@github.com/tenforce/ember-mu-application-generator.git",
+    "ember-mu-application-generator": "https://github.com/tenforce/ember-mu-application-generator.git",
     "ember-power-select": "^1.10.1",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.1",
